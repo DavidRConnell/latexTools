@@ -34,7 +34,7 @@ function addPlotOptionsLine(fid, child)
               'Marker type %s has not been handled yet', child.LineStyle);
     end
 
-    markscaler = 1.3 / 6;
+    markscaler = 0.78 / 6;
     switch child.Marker
       case 'none'
         marker = '';
