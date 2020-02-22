@@ -6,8 +6,9 @@ function generateTikz(filename, h, width)
     fprintf(fid, '\t%s\n', '\begin{axis}[%');
     addAxisOptions(fid, h, width);
 
-    for child = children(end:-1:1)'
-        addChild(fid, child, width)
+    for childNumber = 0:(length(h.Children) - 1)
+        addChild(fid, h.Children(length(h.Children) - childNumber), ...
+                 childNumber + 1, width)
     end
 
     fprintf(fid, '\t%s\n', '\end{axis}');
