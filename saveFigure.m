@@ -1,12 +1,30 @@
-function saveFigure(projectPath, name)
-    figureType = latexTools.getCurrentFigureType;
-    switch figureType
-      case 'Axes'
-        latexTools.saveFigForLatex(name, projectPath);
-      case 'HeatmapChart'
-        saveas(gcf, [projectPath 'figures/' name], 'png')
+function saveFigure(name, projectPath, h, width)
+    if nargin < 2 || isempty(projectPath)
+        projectPath = '.';
+    end
+
+    if nargin < 3 || isempty(h)
+        h = gca;
+    end
+
+    if nargin < 4
+        width = 0.95;
+    end
+
+    validateattributes(width, {'numeric'}, {'>', 0, '<=', 1});
+    filepath = utils.pathjoin(projectPath, 'figures', name);
+    [~, ~, ext] = fileparts(filepath);
+    if isempty(ext)
+        filepath = [filepath, '.tex'];
+    end
+
+    switch h.Type
+      case 'axes'
+        generateTikz(filepath, h, width);
+      case 'heatmap'
+        saveas(gcf, filepath, 'png')
       otherwise
-        msg = 'Figure Type %s not yet implemented in saveFigure.';
-        error('MATLAB:UNKNOWNFIGURETYPE', msg, figureType)
+        msg = 'Figure Type %s not yet handled in saveFigure.';
+        error('LATEXTOOLS:UnknownFigureType', msg, h.Type);
     end
 end
