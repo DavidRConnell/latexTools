@@ -18,8 +18,8 @@ function addAxisOptions(fid, h, width)
     end
 
     if strcmp(h.Box, 'off')
-        fprintf(fid, '\t\t%s\n,', 'axis x line*=bottom');
-        fprintf(fid, '\t\t%s\n,', 'axis y line*=left');
+        fprintf(fid, '\t\t%s,\n', 'axis x line*=bottom');
+        fprintf(fid, '\t\t%s,\n', 'axis y line*=left');
     end
 
     fprintf(fid, '\t%s\n', ']');
