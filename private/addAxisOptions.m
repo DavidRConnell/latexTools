@@ -10,11 +10,11 @@ function addAxisOptions(fid, h, width)
     fprintf(fid, '\t\t%s%0.8g,\n', 'ymax=', h.YLim(2));
 
     if ~isempty(h.XLabel.String)
-        fprintf(fid, '\t\t%s%s%s,\n', 'xlabel={$', h.XLabel.String, '$}');
+        fprintf(fid, '\t\t%s%s%s,\n', 'xlabel={', h.XLabel.String, '}');
     end
 
     if ~isempty(h.YLabel.String)
-        fprintf(fid, '\t\t%s%s%s,\n', 'ylabel={$', h.YLabel.String, '$}');
+        fprintf(fid, '\t\t%s%s%s,\n', 'ylabel={', h.YLabel.String, '}');
     end
 
     if strcmp(h.Box, 'off')
