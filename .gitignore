@@ -1,0 +1,5 @@
+*.bbl
+*.org
+*.pdf
+*.tex
+.auctex-auto
