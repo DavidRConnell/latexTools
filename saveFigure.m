@@ -14,7 +14,7 @@ function saveFigure(name, projectPath, h, width)
     validateattributes(width, {'numeric'}, {'>', 0, '<=', 1});
     filepath = utils.pathjoin(projectPath, 'figures', name);
     [~, ~, ext] = fileparts(filepath);
-    if isempty(ext)
+    if isempty(ext) && ~strcmp(h.Type, 'heatmap')
         filepath = [filepath, '.tex'];
     end
 
