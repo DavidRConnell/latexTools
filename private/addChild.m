@@ -4,6 +4,10 @@ function addChild(fid, child, number, width)
         addPlotOptionsLine(fid, child, number);
       case 'bar'
         addPlotOptionsBar(fid, child, number, width);
+      case 'text'
+        addPlotOptionsText(fid, child, number);
+        fprintf(fid, '\n');
+        return
       otherwise
         error('LATEXTOOLS:UnknownLineStyle', ...
               'Child type %s has not been handled yet', child.type);
@@ -72,4 +76,16 @@ function addPlotOptionsBar(fid, child, number)
             '\addplot', 'ybar', ...
             'fill', barColor, ...
             'draw', edgeColor, ']');
+end
+
+function addPlotOptionsText(fid, child, number)
+    textColor = defineColor(fid, child.Color, 'textColor', number);
+    xpos = child.Position(1);
+    ypos = child.Position(2);
+    node = sprintf('\\node[text=%s]', textColor);
+    position = sprintf('at (%0.3g,%0.3g)', xpos, ypos);
+    fprintf(fid, '%s\n%s {%s};', ...
+            node, ...
+            position, ...
+            child.String);
 end
