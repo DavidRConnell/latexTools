@@ -18,7 +18,7 @@ function addChild(fid, child, number, width)
     fprintf(fid, '\t%s\n', '};');
 
     if ~isempty(child.DisplayName)
-        fprintf(fid, '\t%s\n', ['\\addlegendentry{' child.DisplayName '}']);
+        fprintf(fid, '\t%s\n', ['\addlegendentry{' child.DisplayName '}']);
     end
     fprintf(fid, '\n');
 end
