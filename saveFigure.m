@@ -15,7 +15,7 @@ function saveFigure(name, projectPath, h, width)
     filepath = utils.pathjoin(projectPath, 'figures', name);
     [~, ~, ext] = fileparts(filepath);
     if isempty(ext) && ~strcmp(h.Type, 'heatmap')
-        filepath = [filepath, '.tex'];
+        filepath = [filepath, '.tikz'];
     end
 
     switch h.Type
