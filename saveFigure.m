@@ -7,7 +7,7 @@ function saveFigure(name, projectPath, h, width)
         h = gca;
     end
 
-    if nargin < 4
+    if nargin < 4 || isempty(width)
         width = 0.95;
     end
 
