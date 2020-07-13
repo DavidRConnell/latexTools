@@ -22,5 +22,14 @@ function addAxisOptions(fid, h, width)
         fprintf(fid, '\t\t%s,\n', 'axis y line*=left');
     end
 
+    if ~isempty(h.Legend)
+        legendPos = regexp(h.Legend.Location, ...
+                           '(north|south)*(east|west)*(outside)*', 'tokens', 'once');
+        legendPos = strip(join(legendPos([3 1 2]), ' '));
+        fprintf(fid, '\t\t%s%s,\n', 'legend pos=', legendPos{1});
+        fprintf(fid, '\t\t%s,\n', ...
+                'legend style={nodes={scale=0.75},draw=none}');
+    end
+
     fprintf(fid, '\t%s\n', ']');
 end
