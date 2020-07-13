@@ -1,5 +1,5 @@
 function addAxisOptions(fid, h, width)
-    height = h.PlotBoxAspectRatio(2) * width;
+    height = h.PlotBoxAspectRatio(2) * width / h.PlotBoxAspectRatio(1);
     fprintf(fid, '\t\t%s%0.8g%s,\n', 'width=', width, '\columnwidth');
     fprintf(fid, '\t\t%s%0.8g%s,\n', 'height=', height, '\columnwidth');
     fprintf(fid, '\t\t%s%s,\n', 'xmode=', h.XScale);
